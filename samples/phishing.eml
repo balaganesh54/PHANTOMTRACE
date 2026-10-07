@@ -1,0 +1,10 @@
+From: Microsoft Security <alerts@micros0ft-secure.com>
+To: analyst@example.com
+Reply-To: verify@secure-login.example
+Subject: Urgent account verification
+Date: Mon, 31 Aug 2026 09:41:00 +0530
+Authentication-Results: mx.example; spf=fail dkim=fail dmarc=fail
+Received: from suspicious-host.example by mail.example
+
+Your account requires immediate verification.
+Click here: http://secure-login.example/verify

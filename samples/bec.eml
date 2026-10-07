@@ -1,0 +1,7 @@
+From: executive@example.com
+To: finance@example.com
+Subject: Urgent invoice payment
+Date: Mon, 31 Aug 2026 09:41:00 +0530
+Authentication-Results: mx.example; spf=fail dkim=pass dmarc=fail
+
+Please process the invoice and wire transfer immediately.

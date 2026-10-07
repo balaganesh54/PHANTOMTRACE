@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: phantomtrace
+      POSTGRES_USER: phantom
+      POSTGRES_PASSWORD: phantom_dev_password
+    volumes: [phantomtrace_db:/var/lib/postgresql/data]
+    healthcheck: {test: ["CMD-SHELL","pg_isready -U phantom -d phantomtrace"], interval: 5s, timeout: 5s, retries: 10}
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://phantom:phantom_dev_password@db:5432/phantomtrace
+      CORS_ORIGINS: http://localhost:3000
+      DEMO_MODE: "true"
+    ports: ["8000:8000"]
+    volumes: [./reports:/app/reports]
+    depends_on: {db: {condition: service_healthy}}
+  frontend:
+    build: ./frontend
+    environment: {NEXT_PUBLIC_API_URL: http://localhost:8000/api}
+    ports: ["3000:3000"]
+    depends_on: [backend]
+volumes: {phantomtrace_db: {}}

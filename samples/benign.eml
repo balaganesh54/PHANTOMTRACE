@@ -1,0 +1,7 @@
+From: alice@example.com
+To: analyst@example.com
+Subject: Team lunch
+Date: Mon, 31 Aug 2026 09:41:00 +0530
+Authentication-Results: mx.example; spf=pass dkim=pass dmarc=pass
+
+Hi team, lunch at noon?
